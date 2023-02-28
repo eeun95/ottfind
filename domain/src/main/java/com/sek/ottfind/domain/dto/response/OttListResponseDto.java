@@ -6,12 +6,12 @@ import lombok.Data;
 
 @Data
 @Builder
-public class OttListResponse {
+public class OttListResponseDto {
 
     private String ottName;
 
-    public OttListResponse(Ott ott) {
-        OttListResponse.builder()
+    public OttListResponseDto(Ott ott) {
+        OttListResponseDto.builder()
                 .ottName(ott.getOttCategory().name())
                 .build();
     }
