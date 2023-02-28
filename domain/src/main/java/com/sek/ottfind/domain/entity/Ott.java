@@ -11,9 +11,10 @@ public class Ott {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;                            // 시퀀스
 
+    @Enumerated(EnumType.STRING)
     private OttCategoryEnum ottCategory;        // ott 카테고리
 
     @OneToMany(mappedBy = "ott")
-    private List<OttContent> ottContentList;    // ott 컨텐츠 리스트
+    private List<OttContent> ottContent;    // ott 컨텐츠 리스트
 
 }

@@ -1,5 +1,8 @@
 package com.sek.ottfind.domain.common;
 
+import lombok.Getter;
+
+@Getter
 public class CommonResponse<T> {
     private Code code;
 

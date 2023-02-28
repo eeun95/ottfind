@@ -4,7 +4,6 @@ import com.sek.ottfind.domain.dto.response.OttListResponseDto;
 
 import java.util.List;
 
-public interface OttService {
-    List<OttListResponseDto> getList();
-
+public interface OttListService {
+    List<OttListResponseDto> list();
 }
