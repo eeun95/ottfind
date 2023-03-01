@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/ott")
@@ -20,7 +21,7 @@ public class OttController {
     @GetMapping("")
     public CommonResponse list() {
         List<OttListResponseDto> list = ottListService.list();
-        return new CommonResponse(ResultCode.SUCCESS);
+        return new CommonResponse(ResultCode.SUCCESS, list);
     }
 
 }

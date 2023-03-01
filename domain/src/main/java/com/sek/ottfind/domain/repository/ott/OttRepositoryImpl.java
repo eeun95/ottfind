@@ -20,9 +20,12 @@ public class OttRepositoryImpl implements OttRepositoryCustom{
 
     @Override
     public List list() {
-        List<OttListResponseDto> list = queryFactory.select(Projections.constructor(OttListResponseDto.class, ott.ottCategory, ottContent.title, ottContent.description))
+        List<OttListResponseDto> list = queryFactory
+                .select(Projections.constructor(
+                        OttListResponseDto.class,
+                        ott.ottCategory, ottContent.genre, ottContent.title, ottContent.description))
                 .from(ott)
-                .innerJoin(ottContent)
+                .join(ott.ottContent, ottContent)
                 .fetch();
         return list;
     }

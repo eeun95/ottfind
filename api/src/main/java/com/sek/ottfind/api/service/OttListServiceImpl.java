@@ -19,6 +19,6 @@ public class OttListServiceImpl implements OttListService{
     public List<OttListResponseDto> list() {
         List list = ottRepository.list();
         log.info("list {}", list.toString());
-        return null;
+        return list;
     }
 }
