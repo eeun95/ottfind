@@ -7,7 +7,7 @@ import java.util.List;
 
 @Entity
 @Getter
-public class Ott {
+public class Ott extends BaseEntity {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;                            // 시퀀스
 

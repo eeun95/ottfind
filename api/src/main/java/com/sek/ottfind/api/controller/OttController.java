@@ -3,12 +3,13 @@ package com.sek.ottfind.api.controller;
 import com.sek.ottfind.api.service.OttListService;
 import com.sek.ottfind.domain.common.CommonResponse;
 import com.sek.ottfind.domain.common.ResultCode;
+import com.sek.ottfind.domain.dto.response.OttContentResponseDto;
 import com.sek.ottfind.domain.dto.response.OttListResponseDto;
+import com.sek.ottfind.domain.entity.OttContent;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/ott")
@@ -24,4 +25,11 @@ public class OttController {
         return new CommonResponse(ResultCode.SUCCESS, list);
     }
 
+    // 특정 컨텐츠 리턴
+    @GetMapping("/{contentId}")
+    public CommonResponse content(@PathVariable(name="contentId") Long contentId) {
+        OttContent content = ottListService.content(contentId);
+        OttContentResponseDto response = new OttContentResponseDto(content);
+        return new CommonResponse(ResultCode.SUCCESS, response);
+    }
 }

@@ -7,9 +7,9 @@ import java.util.List;
 
 @Entity
 @Getter
-public class OttContent {
+public class OttContent extends BaseEntity {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;                         // 시퀀스
+    private Long id;                         // 컨텐츠 ID
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "ott_id")
