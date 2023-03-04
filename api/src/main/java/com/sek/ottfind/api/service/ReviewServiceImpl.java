@@ -8,7 +8,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -23,17 +22,18 @@ public class ReviewServiceImpl implements ReviewService{
     }
 
     @Override
-    public Optional<Review> write() {
-        return Optional.empty();
+    public Review write(Review review) {
+        Review saveReview = reviewRepository.save(review);
+        return saveReview;
     }
 
     @Override
-    public Optional<Review> edit() {
-        return Optional.empty();
+    public Review edit() {
+        return null;
     }
 
     @Override
-    public Optional<Review> delete() {
-        return Optional.empty();
+    public Review delete() {
+        return null;
     }
 }

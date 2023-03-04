@@ -1,6 +1,7 @@
 package com.sek.ottfind.domain.entity;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import org.hibernate.annotations.ColumnDefault;
 
 @Entity
@@ -15,7 +16,18 @@ public class Review extends BaseEntity {
     private String url;             // 리뷰 url
 
     @ColumnDefault(value = "0")
-    private int grade;              // 별점 (max 5)
+    private int starGrade;          // 별점 (max 5)
 
-    private String review;          // 리뷰내용
+    private String comment;         // 리뷰내용
+
+    @Builder
+    public Review(String url, int starGrade, String comment) {
+        this.url = url;
+        this.starGrade = starGrade;
+        this.comment = comment;
+    }
+
+    public void setOttContent(OttContent ottContent) {
+        this.ottContent = ottContent;
+    }
 }

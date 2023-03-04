@@ -10,9 +10,9 @@ public interface ReviewService {
 
     List<Review> list(OttContent ottContent);
 
-    Optional<Review> write();
+    Review write(Review review);
 
-    Optional<Review> edit();
+    Review edit(Review review);
 
-    Optional<Review> delete();
+    Review delete();
 }
