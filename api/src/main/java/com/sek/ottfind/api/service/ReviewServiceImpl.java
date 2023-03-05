@@ -1,5 +1,6 @@
 package com.sek.ottfind.api.service;
 
+import com.sek.ottfind.domain.dto.request.ReviewEditRequestDto;
 import com.sek.ottfind.domain.entity.OttContent;
 import com.sek.ottfind.domain.entity.Review;
 import com.sek.ottfind.domain.repository.review.ReviewRepository;
@@ -28,7 +29,8 @@ public class ReviewServiceImpl implements ReviewService{
     }
 
     @Override
-    public Review edit() {
+    public Review edit(Review review) {
+        Review editReview = reviewRepository.save(review);
         return null;
     }
 
