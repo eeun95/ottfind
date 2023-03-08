@@ -1,5 +1,6 @@
 package com.sek.ottfind.api.service;
 
+import com.sek.ottfind.api.exception.ReviewNotFoundException;
 import com.sek.ottfind.domain.dto.request.ReviewEditRequestDto;
 import com.sek.ottfind.domain.entity.OttContent;
 import com.sek.ottfind.domain.entity.Review;
@@ -30,9 +31,11 @@ public class ReviewServiceImpl implements ReviewService{
     }
 
     @Override
-    public Review edit(Review review) {
-
-        return null;
+    public Review edit(ReviewEditRequestDto requestDto) {
+        Review review = findOne(requestDto.getReviewId()).orElseThrow(ReviewNotFoundException::new);
+        review.updateReview(requestDto.getUrl(), requestDto.getStarGrade(), requestDto.getComment());
+        Review editReview = reviewRepository.save(review);
+        return editReview;
     }
 
     @Override

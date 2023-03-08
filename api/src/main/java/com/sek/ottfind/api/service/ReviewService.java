@@ -1,5 +1,6 @@
 package com.sek.ottfind.api.service;
 
+import com.sek.ottfind.domain.dto.request.ReviewEditRequestDto;
 import com.sek.ottfind.domain.entity.OttContent;
 import com.sek.ottfind.domain.entity.Review;
 
@@ -12,7 +13,7 @@ public interface ReviewService {
 
     Review write(Review review);
 
-    Review edit(Review review);
+    Review edit(ReviewEditRequestDto requestDto);
 
     Review delete();
 

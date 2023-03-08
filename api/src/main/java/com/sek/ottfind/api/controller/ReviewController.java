@@ -46,9 +46,8 @@ public class ReviewController {
     // 리뷰 수정
     @PutMapping("edit")
     public CommonResponse edit(ReviewEditRequestDto requestDto) {
-        Review review = reviewService.findOne(requestDto.getReviewId()).orElseThrow(ReviewNotFoundException::new);
-
-        return new CommonResponse(ResultCode.SUCCESS);
+        Review edit = reviewService.edit(requestDto);
+        return new CommonResponse(ResultCode.SUCCESS, edit);
     }
 
     // 리뷰 삭제
