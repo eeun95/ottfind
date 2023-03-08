@@ -1,5 +1,6 @@
 package com.sek.ottfind.api.controller;
 
+import com.sek.ottfind.api.exception.ReviewNotFoundException;
 import com.sek.ottfind.api.service.OttListService;
 import com.sek.ottfind.api.service.ReviewService;
 import com.sek.ottfind.domain.common.CommonResponse;
@@ -12,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
@@ -44,6 +46,8 @@ public class ReviewController {
     // 리뷰 수정
     @PutMapping("edit")
     public CommonResponse edit(ReviewEditRequestDto requestDto) {
+        Review review = reviewService.findOne(requestDto.getReviewId()).orElseThrow(ReviewNotFoundException::new);
+
         return new CommonResponse(ResultCode.SUCCESS);
     }
 

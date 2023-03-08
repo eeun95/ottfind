@@ -20,8 +20,7 @@ public class Review extends BaseEntity {
 
     private String comment;         // 리뷰내용
 
-    @Builder
-    public Review(String url, int starGrade, String comment) {
+    public void updateReview(String url, int starGrade, String comment) {
         this.url = url;
         this.starGrade = starGrade;
         this.comment = comment;

@@ -14,11 +14,4 @@ public class ReviewEditRequestDto {
 
     private String comment;
 
-    public Review toEntity() {
-        return Review.builder()
-                .url(this.url)
-                .starGrade(this.starGrade)
-                .comment(this.comment)
-                .build();
-    }
 }
