@@ -46,7 +46,7 @@ public class ReviewController {
     // 리뷰 수정
     @PutMapping("edit")
     public CommonResponse edit(ReviewEditRequestDto requestDto) {
-        Review edit = reviewService.edit(requestDto);
+        Review edit = reviewService.edit(requestDto.toServiceDto());
         return new CommonResponse(ResultCode.SUCCESS, edit);
     }
 

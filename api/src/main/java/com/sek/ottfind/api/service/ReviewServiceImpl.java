@@ -4,6 +4,7 @@ import com.sek.ottfind.api.exception.ReviewNotFoundException;
 import com.sek.ottfind.domain.dto.request.ReviewEditRequestDto;
 import com.sek.ottfind.domain.entity.OttContent;
 import com.sek.ottfind.domain.entity.Review;
+import com.sek.ottfind.domain.presentation.ReviewServiceDto;
 import com.sek.ottfind.domain.repository.review.ReviewRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -31,8 +32,8 @@ public class ReviewServiceImpl implements ReviewService{
     }
 
     @Override
-    public Review edit(ReviewEditRequestDto requestDto) {
-        Review review = findOne(requestDto.getReviewId()).orElseThrow(ReviewNotFoundException::new);
+    public Review edit(ReviewServiceDto requestDto) {
+        Review review = findOne(requestDto.getId()).orElseThrow(ReviewNotFoundException::new);
         review.updateReview(requestDto.getUrl(), requestDto.getStarGrade(), requestDto.getComment());
         Review editReview = reviewRepository.save(review);
         return editReview;
