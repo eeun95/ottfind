@@ -40,8 +40,8 @@ public class ReviewServiceImpl implements ReviewService{
     }
 
     @Override
-    public Review delete() {
-        return null;
+    public void delete(Review review) {
+        review.deleteReview();
     }
 
     @Override

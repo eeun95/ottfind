@@ -16,7 +16,7 @@ public interface ReviewService {
 
     Review edit(ReviewServiceDto requestDto);
 
-    Review delete();
+    void delete(Review review);
 
     Optional<Review> findOne(Long reviewId);
 }

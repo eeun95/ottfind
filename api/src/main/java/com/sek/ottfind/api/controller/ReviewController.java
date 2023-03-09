@@ -51,9 +51,10 @@ public class ReviewController {
     }
 
     // 리뷰 삭제
-    @DeleteMapping("del")
-    public CommonResponse delete() {
-
+    @DeleteMapping("del/{reviewId}")
+    public CommonResponse delete(@PathVariable Long reviewId) {
+        Review review = reviewService.findOne(reviewId).orElseThrow(ReviewNotFoundException::new);
+        reviewService.delete(review);
         return new CommonResponse(ResultCode.SUCCESS);
     }
 }

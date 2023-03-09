@@ -7,9 +7,9 @@ import java.time.LocalDateTime;
 
 @MappedSuperclass
 public class BaseEntity {
-    private LocalDateTime createDt;
+    protected LocalDateTime createDt;
 
-    private LocalDateTime modifyDt;
+    protected LocalDateTime modifyDt;
 
-    private LocalDateTime deleteDt;
+    protected LocalDateTime deleteDt;
 }
