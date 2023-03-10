@@ -1,5 +1,6 @@
 package com.sek.ottfind.api.controller;
 
+import com.sek.ottfind.api.exception.ContentNotFoundException;
 import com.sek.ottfind.api.exception.ReviewNotFoundException;
 import com.sek.ottfind.api.service.OttListService;
 import com.sek.ottfind.api.service.ReviewService;
@@ -27,16 +28,14 @@ public class ReviewController {
     // 리뷰 조회
     @GetMapping("/{contentId}")
     public CommonResponse list(@PathVariable(name = "contentId") Long contentId) {
-        OttContent ottContent = ottListService.content(contentId);
-        if(ottContent == null) {
-        }
+        OttContent ottContent = ottListService.content(contentId).orElseThrow(ContentNotFoundException::new);
         return new CommonResponse(ResultCode.SUCCESS, ottContent.getReview());
     }
 
     // 리뷰 등록
     @PostMapping("write")
     public CommonResponse write(ReviewInsertRequestDto requestDto) {
-        OttContent ottContent = ottListService.content(requestDto.getOttContentId());
+        OttContent ottContent = ottListService.content(requestDto.getOttContentId()).orElseThrow(ContentNotFoundException::new);
         Review review = requestDto.toEntity();
         review.setOttContent(ottContent);
         reviewService.write(review);

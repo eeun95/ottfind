@@ -10,5 +10,5 @@ import java.util.Optional;
 public interface OttListService {
     List<OttListResponseDto> list();
 
-    OttContent content(Long contentId);
+    Optional<OttContent> content(Long contentId);
 }

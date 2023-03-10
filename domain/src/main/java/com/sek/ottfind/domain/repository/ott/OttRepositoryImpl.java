@@ -9,6 +9,7 @@ import com.sek.ottfind.domain.entity.QOttContent;
 import jakarta.persistence.EntityManager;
 
 import java.util.List;
+import java.util.Optional;
 
 import static com.sek.ottfind.domain.entity.QOtt.*;
 import static com.sek.ottfind.domain.entity.QOttContent.*;
@@ -35,10 +36,10 @@ public class OttRepositoryImpl implements OttRepositoryCustom{
     }
 
     @Override
-    public OttContent content(Long contentId) {
+    public Optional<OttContent> content(Long contentId) {
         OttContent ottContent = queryFactory.selectFrom(QOttContent.ottContent)
                 .where(QOttContent.ottContent.id.eq(contentId))
                 .fetchOne();
-        return ottContent;
+        return Optional.of(ottContent);
     }
 }

@@ -1,5 +1,6 @@
 package com.sek.ottfind.api.controller;
 
+import com.sek.ottfind.api.exception.ContentNotFoundException;
 import com.sek.ottfind.api.service.OttListService;
 import com.sek.ottfind.domain.common.CommonResponse;
 import com.sek.ottfind.domain.common.ResultCode;
@@ -10,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/ott")
@@ -28,7 +30,7 @@ public class OttController {
     // 특정 컨텐츠 리턴
     @GetMapping("/{contentId}")
     public CommonResponse content(@PathVariable(name="contentId") Long contentId) {
-        OttContent content = ottListService.content(contentId);
+        OttContent content = ottListService.content(contentId).orElseThrow(ContentNotFoundException::new);
         OttContentResponseDto response = new OttContentResponseDto(content);
         return new CommonResponse(ResultCode.SUCCESS, response);
     }

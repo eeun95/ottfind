@@ -26,8 +26,8 @@ public class OttListServiceImpl implements OttListService{
     }
 
     @Override
-    public OttContent content(Long contentId) {
-        OttContent content = ottRepository.content(contentId);
+    public Optional<OttContent> content(Long contentId) {
+        Optional<OttContent> content = ottRepository.content(contentId);
         return content;
     }
 }

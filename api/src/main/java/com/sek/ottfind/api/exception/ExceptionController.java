@@ -8,8 +8,12 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class ExceptionController {
 
+    @ExceptionHandler(ContentNotFoundException.class)
+    public CommonResponse contentNotFoundHandler(ContentNotFoundException e) {
+        return new CommonResponse(ErrorCode.NOT_FOUND_OTT_CONTENT);
+    }
     @ExceptionHandler(ReviewNotFoundException.class)
-    public CommonResponse memberNotFoundHandler(ReviewNotFoundException e) {
+    public CommonResponse reviewNotFoundHandler(ReviewNotFoundException e) {
         return new CommonResponse(ErrorCode.NOT_FOUND_REVIEW);
     }
 }
