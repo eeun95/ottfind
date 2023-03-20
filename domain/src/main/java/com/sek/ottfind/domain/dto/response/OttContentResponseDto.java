@@ -8,7 +8,6 @@ import lombok.Builder;
 import lombok.Data;
 
 @Data
-@Builder
 public class OttContentResponseDto {
 
     private Long contentId;
@@ -24,12 +23,11 @@ public class OttContentResponseDto {
     private String subActor;
 
     public OttContentResponseDto(OttContent ottContent) {
-        OttContentResponseDto.builder()
-                .contentId(ottContent.getId())
-                .genre(ottContent.getGenre())
-                .title(ottContent.getTitle())
-                .description(ottContent.getTitle())
-                .mainActor(ottContent.getMainActor())
-                .subActor(ottContent.getSubActor());
+        this.contentId = ottContent.getId();
+        this.genre = ottContent.getGenre();
+        this.title = ottContent.getTitle();
+        this.description = ottContent.getDescription();
+        this.mainActor = ottContent.getMainActor();
+        this.subActor = ottContent.getSubActor();
     }
 }
